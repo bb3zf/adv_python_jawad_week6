@@ -1,0 +1,32 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 1)
+df = pd.read_csv(r"C:\Users\Jawad.A\Downloads\day26_distributions (1).csv")
+
+# 2)
+plt.figure(figsize = (7,5))
+df["income"].hist(bins = 30, edgecolor = "black", color = "red")
+plt.title("income distribution", color = "blue")
+plt.xlabel("income") ; plt.ylabel("count")
+plt.tight_layout() ; plt.show()
+
+plt.figure(figsize = (7,5))
+sns.kdeplot(df["income"], fill = True, edgecolor = "black", color = "blue")
+plt.title("income distribution", color = "red")
+plt.xlabel("income") ; plt.ylabel("count")
+plt.tight_layout() ; plt.show()
+
+# 3)
+sns.kdeplot(df["income"], label = "Income (right-skewed)")
+plt.title("skewed", color = "black")
+plt.tight_layout() ; plt.show()
+print(df.describe())
+
+# 4)
+df = np.log1p(df)
+sns.kdeplot(df["income"], label = "Income (right-skewed)")
+plt.title("replot- skewed & log1p", color = "black")
+plt.tight_layout() ; plt.show()
