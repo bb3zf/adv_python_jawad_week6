@@ -1,0 +1,26 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(r"C:\Users\Jawad.A\Downloads\day27_boxplots (1).csv")
+
+plt.figure(figsize=(7,5))
+sns.boxplot(x="group", y="score", data=df)
+plt.title("Box Plot"); plt.ylabel("score")
+plt.show()
+
+plt.figure(figsize=(7,5))
+sns.histplot(df["score"], bins = 15)
+plt.title("hist Plot"); plt.xlabel("count") ; plt.ylabel("score")
+plt.show()
+
+med = df.groupby("score").median()
+upper = df.groupby("score").quantile(0.75)
+lower = df.groupby("score").quantile(0.25)
+IQR = upper - lower
+
+print("Median score: ", med)
+print("Lower quantile: ", lower)
+print("Upper quantile: ", upper)
+print("IQR: ", IQR)
