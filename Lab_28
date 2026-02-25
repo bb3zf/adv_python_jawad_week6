@@ -1,0 +1,16 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(r"C:\Users\Jawad.A\Downloads\day28_groupby.csv")
+
+reg_summary = df.groupby("region")["sales"].agg(["count", "mean", "median", "std"])
+print(reg_summary)
+
+mean_sales = df.groupby("region")["sales"].mean().reset_index()
+
+plt.figure(figsize = (8,6))
+sns.barplot(x="region", y="sales", data=mean_sales, color = "purple")
+plt.title("Sales by region")
+plt.tight_layout()
+plt.show()
