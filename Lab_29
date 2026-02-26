@@ -1,0 +1,17 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(r"C:\Users\Jawad.A\Downloads\day29_correlations (1).csv")
+
+corr_matrix = df.corr()
+
+plt.figure(figsize=(10, 10))
+sns.heatmap(corr_matrix, annot=True, cmap="YlGnBu", vmin=-1, vmax=1)
+plt.title("Correlation Matrix")
+plt.show()
+
+plt.figure(figsize=(10, 10))
+plt.scatter(df["feature_x"], df["feature_y"], alpha = 0.5)
+plt.title("Feature_x vs Feature_y") ; plt.xlabel("Feature_x"); plt.ylabel("Feature_y")
+plt.show()
